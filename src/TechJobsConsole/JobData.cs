@@ -49,8 +49,9 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
-                {
+                // if (aValue.Contains(value)) 
+                if (aValue.IndexOf(value, System.StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
                     jobs.Add(row);
                 }
             }
@@ -76,6 +77,7 @@ namespace TechJobsConsole
                 while (reader.Peek() >= 0)
                 {
                     string line = reader.ReadLine();
+                    //line = line.ToLower();
                     string[] rowArrray = CSVRowToStringArray(line);
                     if (rowArrray.Length > 0)
                     {
@@ -149,7 +151,8 @@ namespace TechJobsConsole
             {
                 foreach (KeyValuePair<string, string> column in job)
                 {
-                    if (column.Value.Contains(keyword))
+                    //if (column.Value.Contains(keyword))
+                    if (column.Value.IndexOf(keyword, System.StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         if (!values.Contains(job))
                         {
