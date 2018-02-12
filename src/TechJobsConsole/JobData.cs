@@ -10,10 +10,12 @@ namespace TechJobsConsole
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
-        public static List<Dictionary<string, string>> FindAll()
+        public static Dictionary<string, string>[] FindAll()
         {
             LoadData();
-            return AllJobs;
+            Dictionary<string, string>[] jobsArray = new Dictionary<string, string>[AllJobs.Count];
+            AllJobs.CopyTo(jobsArray);
+            return jobsArray;
         }
 
         /*
